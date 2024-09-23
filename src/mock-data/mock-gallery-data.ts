@@ -1,0 +1,43 @@
+import { GalleryItem } from '../../types'
+
+import {
+  BearImg,
+  CatImg,
+  DogImg,
+  MrFoxImg,
+  Psychodelic1Img,
+  Psychodelic2Img,
+  PsychodelicImg,
+  Robot1Img,
+  Robot2Img,
+  RobotImg,
+  RoboticaImg,
+  ShroomieImg,
+} from '../assets/images'
+
+export const galleryData: GalleryItem[] = [
+  {
+    id: 1,
+    mainImg: DogImg,
+    miniImgs: [CatImg, BearImg],
+    title: 'DSGN Animals',
+    username: 'MrFox',
+    userIcon: MrFoxImg,
+  },
+  {
+    id: 2,
+    mainImg: PsychodelicImg,
+    miniImgs: [Psychodelic1Img, Psychodelic2Img],
+    title: 'Magic Mushrooms',
+    username: 'Shroomie',
+    userIcon: ShroomieImg,
+  },
+  {
+    id: 3,
+    mainImg: RobotImg,
+    miniImgs: [Robot1Img, Robot2Img],
+    title: 'DSGN Animals',
+    username: 'Robotica',
+    userIcon: RoboticaImg,
+  },
+]

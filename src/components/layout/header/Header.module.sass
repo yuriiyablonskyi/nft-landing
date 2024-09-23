@@ -1,0 +1,88 @@
+@import '../../../styles/main.sass'
+
+.headerScrolled
+  box-shadow: 0 8px 20px 0 rgba(#000, 0.5)
+
+.header
+  @include flex(space-between, center)
+  padding: 0 50px
+  height: 100px
+  position: fixed
+  background-color: $black
+  width: 100%
+  z-index: 100
+  transition: $transition
+  @media (max-width: $breakpoint-small)
+    padding: 0 30px
+
+  &__logo
+    @include flex(center, center)
+    @media (max-width: $breakpoint-extra-small)
+      max-width: 180px
+
+  &__logoImg
+    display: block
+    width: 100%
+    height: auto
+
+  &__list
+    @include flex(space-between, center)
+    list-style: none
+    transition: $transition
+    @media (max-width: $breakpoint-medium-large)
+      flex-direction: column
+      width: 100%
+      padding: 60px 30px
+      position: absolute
+      z-index: 150
+      top: 100px
+      margin-bottom: 50px
+      left: -100%
+      background-color: $gray
+
+  &__listOpen
+    left: 0
+
+  &__link
+    color: $white
+    padding: 12px 20px
+    font-weight: 600
+    font-size: 16px
+    line-height: 1.4
+    margin-right: 10px
+    @media (max-width: $breakpoint-medium-large)
+      margin-right: 0
+      padding: 0
+      font-size: 18px
+      margin-bottom: 40px
+
+.burger
+  display: none
+  flex-direction: column
+  width: 45px
+  height: 41px
+  padding: 10px
+  @media (max-width: $breakpoint-medium-large)
+    @include flex(space-between, null)
+
+  &__item
+    height: 3px
+    border-radius: 12px
+    background-color: $white
+    transition: $transition
+    &:nth-of-type(1),
+    &:nth-of-type(3)
+      width: 23px
+    &:nth-of-type(2)
+      width: 30px
+
+.burgerOpen .burger__item
+  &:nth-of-type(1),
+  &:nth-of-type(3)
+    width: 30px
+  &:nth-of-type(1)
+    transform: rotateZ(45deg) translateY(13px)
+  &:nth-of-type(3)
+    transform: rotateZ(-45deg) translateY(-13px)
+  &:nth-of-type(2)
+    transform: scale(0)

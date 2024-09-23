@@ -1,0 +1,29 @@
+import { FC } from 'react'
+import { GuideData } from '../../../mock-data/mock-guide-data'
+import Container from '../../common/container'
+import SectionHeader from '../../common/section-header'
+import styles from './GuideSection.module.sass'
+
+const GuideSection: FC = () => (
+  <section>
+    <Container>
+      <div className={styles.wrapper}>
+        <SectionHeader title="How it works" subtitle="Find out how to get started" />
+
+        <div className={styles.guideList}>
+          {GuideData.map(({ id, icon, title, text }) => (
+            <div key={id} className={styles.guideList__item}>
+              <img className={styles.guideList__img} src={icon} alt={title} />
+              <div className={styles.guideList__info}>
+                <h4 className={styles.guideList__title}>{title}</h4>
+                <p className={styles.guideList__text}>{text}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </Container>
+  </section>
+)
+
+export default GuideSection
