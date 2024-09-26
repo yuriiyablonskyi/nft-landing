@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { galleryData } from '../../../mock-data/mock-gallery-data'
-import Container from '../../common/container'
-import SectionHeader from '../../common/section-header'
+import Container from '../../common/container/Container.tsx'
+import SectionHeader from '../../common/section-header/SectionHeader.tsx'
 import styles from './GallerySection.module.sass'
 
 const GallerySection: FC = () => (

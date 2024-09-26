@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { SectionHeaderProps } from '../../../../types/common'
+import { SectionHeaderProps } from '../../../../types'
 import styles from './SectionHeader.module.sass'
 
 const SectionHeader: FC<SectionHeaderProps> = ({ title, subtitle }) => (

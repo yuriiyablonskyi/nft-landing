@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { DiscordIcon, EnvelopeIcon, InstagramIcon, LogoIcon, TwitterIcon, YoutubeIcon } from '../../../assets/icons'
-import Button from '../../common/button'
-import Container from '../../common/container'
+import Button from '../../common/button/Button'
+import Container from '../../common/container/Container'
 import styles from './Footer.module.sass'
 
 const Footer: FC = () => (

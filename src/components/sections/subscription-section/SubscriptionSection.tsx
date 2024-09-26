@@ -1,9 +1,9 @@
 import { FC } from 'react'
 import { EnvelopeIcon } from '../../../assets/icons'
 import { AstronautNewspaperImg } from '../../../assets/images'
-import Button from '../../common/button'
-import Container from '../../common/container'
-import SectionHeader from '../../common/section-header'
+import Button from '../../common/button/Button'
+import Container from '../../common/container/Container.tsx'
+import SectionHeader from '../../common/section-header/SectionHeader.tsx'
 import styles from './SubscriptionSection.module.sass'
 
 const SubscriptionSection: FC = () => (

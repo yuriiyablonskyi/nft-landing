@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from 'react'
 import { LogoIcon, UserIcon } from '../../../assets/icons'
-import Button from '../../common/button'
+import Button from '../../common/button/Button'
 import styles from './Header.module.sass'
 
 const Header: FC = () => {

@@ -2,8 +2,8 @@ import { FC } from 'react'
 import { EyePurpleIcon } from '../../../assets/icons'
 import { ShroomieImg } from '../../../assets/images'
 import { useCountdown } from '../../../hooks/useCountdown'
-import Button from '../../common/button'
-import Container from '../../common/container'
+import Button from '../../common/button/Button'
+import Container from '../../common/container/Container.tsx'
 import styles from './CountdownSection.module.sass'
 
 const CountdownSection: FC = () => {

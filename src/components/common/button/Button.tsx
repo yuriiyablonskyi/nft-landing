@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { ButtonProps } from '../../../../types/common'
+import { ButtonProps } from '../../../../types'
 import styles from './Button.module.sass'
 
 const Button: FC<ButtonProps> = ({ icon, text, type = 'button', color = 'purple' }) => {

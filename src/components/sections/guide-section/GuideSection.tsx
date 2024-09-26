@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { GuideData } from '../../../mock-data/mock-guide-data'
-import Container from '../../common/container'
-import SectionHeader from '../../common/section-header'
+import Container from '../../common/container/Container.tsx'
+import SectionHeader from '../../common/section-header/SectionHeader.tsx'
 import styles from './GuideSection.module.sass'
 
 const GuideSection: FC = () => (
@@ -9,7 +9,6 @@ const GuideSection: FC = () => (
     <Container>
       <div className={styles.wrapper}>
         <SectionHeader title="How it works" subtitle="Find out how to get started" />
-
         <div className={styles.guideList}>
           {GuideData.map(({ id, icon, title, text }) => (
             <div key={id} className={styles.guideList__item}>

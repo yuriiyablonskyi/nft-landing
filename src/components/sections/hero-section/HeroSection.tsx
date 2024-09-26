@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { RocketLaunchIcon } from '../../../assets/icons'
 import { AnimakidImg, AstronautKidImg } from '../../../assets/images'
-import Button from '../../common/button'
+import Button from '../../common/button/Button'
 import Container from '../../common/container/Container'
 import styles from './HeroSection.module.sass'
 
@@ -30,7 +30,6 @@ const HeroSection: FC = () => (
             </div>
           </div>
         </div>
-
         <div className={styles.wrapper__image}>
           <img src={AstronautKidImg} alt="" className={styles.img} />
           <div className={styles.img__info}>

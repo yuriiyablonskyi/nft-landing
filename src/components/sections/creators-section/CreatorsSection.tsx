@@ -1,9 +1,9 @@
 import { FC } from 'react'
 import { RocketLaunchIcon } from '../../../assets/icons'
 import { creatorsData } from '../../../mock-data/mock-creators-data'
-import Button from '../../common/button'
-import Container from '../../common/container'
-import SectionHeader from '../../common/section-header'
+import Button from '../../common/button/Button'
+import Container from '../../common/container/Container.tsx'
+import SectionHeader from '../../common/section-header/SectionHeader.tsx'
 import styles from './CreatorsSection.module.sass'
 
 const CreatorsSection: FC = () => (
