@@ -13,22 +13,22 @@ const Footer: FC = () => (
             <img src={LogoIcon} alt="logo" />
           </a>
           <a href="#" className={styles.footer__link}>
-            NFT marketplace UI created with Anima for Figma.
+            NFT marketplace UI created with Anima for Figma /.
           </a>
 
           <div className={styles.footer__social}>
             <p className={styles.footer__text}>Join our community</p>
             <a href="#" className={styles.footer__socialLink}>
-              <img className={styles.footer__socialIcon} src={DiscordIcon} alt="" />
+              <img className={styles.footer__socialIcon} src={DiscordIcon} alt="Discord Icon" />
             </a>
             <a href="#" className={styles.footer__socialLink}>
-              <img className={styles.footer__socialIcon} src={YoutubeIcon} alt="" />
+              <img className={styles.footer__socialIcon} src={YoutubeIcon} alt="Youtube Icon" />
             </a>
             <a href="#" className={styles.footer__socialLink}>
-              <img className={styles.footer__socialIcon} src={TwitterIcon} alt="" />
+              <img className={styles.footer__socialIcon} src={TwitterIcon} alt="Twitter Icon" />
             </a>
             <a href="#" className={styles.footer__socialLink}>
-              <img className={styles.footer__socialIcon} src={InstagramIcon} alt="" />
+              <img className={styles.footer__socialIcon} src={InstagramIcon} alt="Instagram Icon" />
             </a>
           </div>
         </div>
@@ -47,7 +47,7 @@ const Footer: FC = () => (
         <div className={styles.footer__item}>
           <h4 className={styles.footer__header}>Join our weekly digest</h4>
           <a href="#" className={styles.footer__link}>
-            Get exclusive promotions & updates straight to your inbox.
+            Get exclusive promotions & updates straight to your inbox /.
           </a>
           <form className={styles.footer__form}>
             <input

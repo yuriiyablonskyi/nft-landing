@@ -36,7 +36,7 @@ export const galleryData: GalleryItem[] = [
     id: 3,
     mainImg: RobotImg,
     miniImgs: [Robot1Img, Robot2Img],
-    title: 'DSGN Animals',
+    title: 'Disco Machines',
     username: 'Robotica',
     userIcon: RoboticaImg,
   },

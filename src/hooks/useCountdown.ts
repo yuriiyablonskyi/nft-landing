@@ -1,43 +1,27 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
+import { CountdownValues } from '../../types'
 
-type CountdownReturnType = [number, number, number]
-export const useCountdown = (
-  initialHours: number = 59,
-  initialMinutes: number = 59,
-  initialSeconds: number = 59,
-): CountdownReturnType => {
-  const [hours, setHours] = useState<number>(initialHours)
-  const [minutes, setMinutes] = useState<number>(initialMinutes)
-  const [seconds, setSeconds] = useState<number>(initialSeconds)
-  const timerRef = useRef<number | null>(null)
+export const useCountdown = (initialHours: number, initialMinutes: number, initialSeconds: number): CountdownValues => {
+  const initialTime = initialHours * 3600 + initialMinutes * 60 + initialSeconds
+  const [timeRemaining, setTimeRemaining] = useState(initialTime)
 
   useEffect(() => {
-    const tick = () => {
-      if (hours === 0 && minutes === 0 && seconds === 0) {
-        if (timerRef.current) {
-          clearInterval(timerRef.current)
+    const timerInterval = setInterval(() => {
+      setTimeRemaining(prevTime => {
+        if (prevTime <= 0) {
+          clearInterval(timerInterval)
+          return 0
         }
-        return
-      }
+        return prevTime - 1
+      })
+    }, 1000)
 
-      if (seconds > 0) {
-        setSeconds(prev => prev - 1)
-      } else if (minutes > 0) {
-        setMinutes(prev => prev - 1)
-        setSeconds(59)
-      } else if (hours > 0) {
-        setHours(prev => prev - 1)
-        setMinutes(59)
-        setSeconds(59)
-      }
-    }
-    timerRef.current = setInterval(tick, 1000)
+    return () => clearInterval(timerInterval)
+  }, [])
 
-    return () => {
-      if (timerRef.current) {
-        clearInterval(timerRef.current)
-      }
-    }
-  }, [hours, minutes, seconds])
-  return [hours, minutes, seconds]
+  const hours = Math.floor(timeRemaining / 3600)
+  const minutes = Math.floor((timeRemaining % 3600) / 60)
+  const seconds = timeRemaining % 60
+
+  return { hours, minutes, seconds }
 }

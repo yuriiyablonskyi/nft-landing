@@ -1,4 +1,5 @@
 import { FC } from 'react'
+import { CountdownValues } from '../../../../types/hooks'
 import { EyePurpleIcon } from '../../../assets/icons'
 import { ShroomieImg } from '../../../assets/images'
 import { useCountdown } from '../../../hooks/useCountdown'
@@ -7,7 +8,8 @@ import Container from '../../common/container/Container.tsx'
 import styles from './CountdownSection.module.sass'
 
 const CountdownSection: FC = () => {
-  const [hours, minutes, seconds] = useCountdown()
+  const { hours, minutes, seconds }: CountdownValues = useCountdown(59, 59, 59)
+
   return (
     <div className={styles.wrapper}>
       <Container>
@@ -22,7 +24,7 @@ const CountdownSection: FC = () => {
           </div>
 
           <div className={styles.timer}>
-            <p className={styles.timer__text}>Auction ends in:</p>
+            <p className={styles.timer__text}>Auction ends in /:</p>
             <div className={styles.timer__time}>
               <div>
                 <p className={styles.timer__value}>{String(hours).padStart(2, '0')}</p>

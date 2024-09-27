@@ -31,12 +31,12 @@ const HeroSection: FC = () => (
           </div>
         </div>
         <div className={styles.wrapper__image}>
-          <img src={AstronautKidImg} alt="" className={styles.img} />
+          <img src={AstronautKidImg} alt="Astronaut Kid" className={styles.img} />
           <div className={styles.img__info}>
             <h4 className={styles.img__title}>Space Walking</h4>
             <div className={styles.img__user}>
               <img src={AnimakidImg} alt="user icon" className={styles.img__icon} />{' '}
-              <span className={styles.img__label}> Animakid</span>
+              <span className={styles.img__label}>Animakid</span>
             </div>
           </div>
         </div>

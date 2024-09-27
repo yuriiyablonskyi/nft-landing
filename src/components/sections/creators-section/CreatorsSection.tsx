@@ -15,11 +15,11 @@ const CreatorsSection: FC = () => (
           {creatorsData.map(({ id, title, img }, index) => (
             <div key={id} className={styles.creatorsList__item}>
               <p className={styles.creatorsList__number}>{index + 1}</p>
-              <img className={styles.creatorsList__img} src={img} alt="" />
+              <img className={styles.creatorsList__img} src={img} alt={title} />
               <div className={styles.creatorsList__info}>
                 <h4 className={styles.creatorsList__title}>{title}</h4>
                 <p>
-                  <span className={styles.creatorsList__label}>Total Sales:</span>
+                  <span className={styles.creatorsList__label}>Total Sales /:</span>
                   <span className={styles.creatorsList__count}>34.53 ETH</span>
                 </p>
               </div>
