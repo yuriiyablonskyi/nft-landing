@@ -35,7 +35,7 @@
         "title": "Приєднуйтесь до нашого щотижневого дайджесту",
         "description": "Отримуйте ексклюзивні акції та оновлення прямо на вашу пошту",
         "form": {
-          "inputPlaceholder": "Введіть ваш email тут",,
+          "inputPlaceholder": "Введіть ваш email тут",
           "buttonText": "Підписатися"
         }
       }
@@ -72,9 +72,7 @@
         "discoMachines": {
           "label": "Диско Машини"
         }
-      },
-      "totalSalesLabel": "Загальний продаж",
-      "buttonText": "Переглянути рейтинги"
+      }
     },
     "creatorsSection": {
       "header": {
@@ -127,10 +125,6 @@
       }
     },
     "countdownSection": {
-      "user": {
-        "label": "Shroomie",
-        "iconAlt": "Shroomie"
-      },
       "title": "Магічні гриби",
       "buttonText": "Переглянути NFT",
       "timer": {

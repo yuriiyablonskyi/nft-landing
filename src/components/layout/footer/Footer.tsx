@@ -3,66 +3,84 @@ import { DiscordIcon, EnvelopeIcon, InstagramIcon, LogoIcon, TwitterIcon, Youtub
 import Button from '../../common/button/Button'
 import Container from '../../common/container/Container'
 import styles from './Footer.module.sass'
+import { useTranslation } from 'react-i18next'
 
-const Footer: FC = () => (
-  <section className={styles.wrapper}>
-    <Container>
-      <div className={styles.footer}>
-        <div className={styles.footer__item}>
-          <a href="#" className={styles.footer__logo}>
-            <img src={LogoIcon} alt="logo" />
-          </a>
-          <a href="#" className={styles.footer__link}>
-            NFT marketplace UI created with Anima for Figma /.
-          </a>
+const Footer: FC = () => {
+  const { t } = useTranslation()
+  return (
+    <section className={styles.wrapper}>
+      <Container>
+        <div className={styles.footer}>
+          <div className={styles.footer__item}>
+            <a href="#" className={styles.footer__logo}>
+              <img src={LogoIcon} alt={t('layout.footer.logo.logoAlt')} />
+            </a>
+            <a href="#" className={styles.footer__link}>
+              {t('layout.footer.logo.logoAlt')}
+            </a>
 
-          <div className={styles.footer__social}>
-            <p className={styles.footer__text}>Join our community</p>
-            <a href="#" className={styles.footer__socialLink}>
-              <img className={styles.footer__socialIcon} src={DiscordIcon} alt="Discord Icon" />
+            <div className={styles.footer__social}>
+              <p className={styles.footer__text}>{t('layout.footer.social.joinCommunity')}</p>
+              <a href="#" className={styles.footer__socialLink}>
+                <img
+                  className={styles.footer__socialIcon}
+                  src={DiscordIcon}
+                  alt={t('layout.footer.social.links.discordAlt')}
+                />
+              </a>
+              <a href="#" className={styles.footer__socialLink}>
+                <img
+                  className={styles.footer__socialIcon}
+                  src={YoutubeIcon}
+                  alt={t('layout.footer.social.links.youtubeAlt')}
+                />
+              </a>
+              <a href="#" className={styles.footer__socialLink}>
+                <img
+                  className={styles.footer__socialIcon}
+                  src={TwitterIcon}
+                  alt={t('layout.footer.social.links.twitterAlt')}
+                />
+              </a>
+              <a href="#" className={styles.footer__socialLink}>
+                <img
+                  className={styles.footer__socialIcon}
+                  src={InstagramIcon}
+                  alt={t('layout.footer.social.links.instagramdAlt')}
+                />
+              </a>
+            </div>
+          </div>
+          <div className={styles.footer__item}>
+            <h4 className={styles.footer__header}>{t('layout.footer.explore.title')}</h4>
+            <a href="#" className={styles.footer__link}>
+              {t('layout.footer.explore.links.marketplace')}
             </a>
-            <a href="#" className={styles.footer__socialLink}>
-              <img className={styles.footer__socialIcon} src={YoutubeIcon} alt="Youtube Icon" />
+            <a href="#" className={styles.footer__link}>
+              {t('layout.footer.explore.links.rankings')}
             </a>
-            <a href="#" className={styles.footer__socialLink}>
-              <img className={styles.footer__socialIcon} src={TwitterIcon} alt="Twitter Icon" />
-            </a>
-            <a href="#" className={styles.footer__socialLink}>
-              <img className={styles.footer__socialIcon} src={InstagramIcon} alt="Instagram Icon" />
+            <a href="#" className={styles.footer__link}>
+              {t('layout.footer.explore.links.connectWallet')}
             </a>
           </div>
+          <div className={styles.footer__item}>
+            <h4 className={styles.footer__header}>{t('layout.footer.newsletter.title')}</h4>
+            <p className={styles.footer__text}>{t('layout.footer.newsletter.description')}</p>
+            <form className={styles.footer__form}>
+              <input
+                type="email"
+                placeholder={t('layout.footer.newsletter.form.input.placeholder')}
+                className={styles.footer__input}
+                required
+                aria-label={t('layout.footer.newsletter.form.input.ariaLabel')}
+              />
+              <Button icon={EnvelopeIcon} text={t('layout.footer.newsletter.form.buttonText')} type="submit" />
+            </form>
+          </div>
         </div>
-        <div className={styles.footer__item}>
-          <h4 className={styles.footer__header}>Explore</h4>
-          <a href="#" className={styles.footer__link}>
-            Marketplace
-          </a>
-          <a href="#" className={styles.footer__link}>
-            Rankings
-          </a>
-          <a href="#" className={styles.footer__link}>
-            Connect a wallet
-          </a>
-        </div>
-        <div className={styles.footer__item}>
-          <h4 className={styles.footer__header}>Join our weekly digest</h4>
-          <a href="#" className={styles.footer__link}>
-            Get exclusive promotions & updates straight to your inbox /.
-          </a>
-          <form className={styles.footer__form}>
-            <input
-              type="email"
-              placeholder="Enter your email here"
-              className={styles.footer__input}
-              required
-              aria-label="Email"
-            />
-            <Button icon={EnvelopeIcon} text="Subscribe" type="submit" />
-          </form>
-        </div>
-      </div>
-    </Container>
-  </section>
-)
+      </Container>
+    </section>
+  )
+}
 
 export default Footer

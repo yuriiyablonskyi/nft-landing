@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import { Showcase } from '../../types'
 import {
   AstronautGirl,
@@ -7,6 +8,8 @@ import {
   JuanieImg,
   SpaceWithKidImg,
 } from '../assets/images'
+
+const { t } = useTranslation()
 
 export const showcaseData: Showcase[] = [
   {

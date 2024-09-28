@@ -75,9 +75,7 @@
         "discoMachines": {
           "label": "Disco Machines"
         }
-      },
-      "totalSalesLabel": "Total Sales",
-      "buttonText": "View Rankings"
+      }
     },
     "creatorsSection": {
       "header": {
@@ -130,10 +128,6 @@
       }
     },
     "countdownSection": {
-      "user": {
-        "label": "Shroomie",
-        "iconAlt": "Shroomie"
-      },
       "title": "Magic Mashrooms",
       "buttonText": "See NFT",
       "timer": {

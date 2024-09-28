@@ -14,6 +14,9 @@ import {
 } from '../assets/images'
 
 import { Creator } from '../../types'
+import { useTranslation } from 'react-i18next'
+
+const { t } = useTranslation()
 
 export const creatorsData: Creator[] = [
   {

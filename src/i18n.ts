@@ -1,14 +1,10 @@
-import i18next from 'i18next'
+import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
 import en from './locales/en.json'
 import pl from './locales/pl.json'
 import uk from './locales/uk.json'
 
-interface TranslationResources {
-  translation: typeof en;
-}
-
-const resources: Record<string, TranslationResources> = {
+export const resources = {
   en: {
     translation: en,
   },
@@ -18,12 +14,15 @@ const resources: Record<string, TranslationResources> = {
   uk: {
     translation: uk,
   },
-}
+} as const
 
-i18next.use(initReactI18next).init({
+i18n.use(initReactI18next).init({
   resources,
-  lng: localStorage.getItem('language') || 'en',
   lng: 'en',
+  fallbackLng: 'en',
+  interpolation: {
+    escapeValue: false,
+  },
 })
 
-export default i18next
+export default i18n

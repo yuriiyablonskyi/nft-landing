@@ -2,6 +2,7 @@ import { FC, useEffect, useState } from 'react'
 import { LogoIcon, UserIcon } from '../../../assets/icons'
 import Button from '../../common/button/Button'
 import styles from './Header.module.sass'
+import { useTranslation } from 'react-i18next'
 
 import { useRef } from 'react'
 import { motion, sync, useCycle } from 'framer-motion'
@@ -9,6 +10,14 @@ import { MenuToggle } from './MenuToggle'
 import { Navigation } from './Navigation'
 
 const Header: FC = () => {
+  const { t, i18n } = useTranslation()
+
+  const changeLanguage = (lang: string) => {
+    console.log(lang)
+
+    i18n.changeLanguage(lang)
+  }
+
   const [menuOpen, setMenuOpen] = useState<boolean>(false)
   const [scrolled, setScrolled] = useState(false)
 
@@ -70,23 +79,25 @@ const Header: FC = () => {
   return (
     <header className={`${styles.header} ${scrolled ? styles.headerScrolled : ''}`}>
       <a href="#" className={styles.header__logo}>
-        <img src={LogoIcon} alt="logo" className={styles.header__logoImg} />
+        <img src={LogoIcon} alt={t('layout.header.logoAlt')} className={styles.header__logoImg} />
       </a>
       <motion.nav
         animate={menuOpen ? 'open' : 'closed'}
         className={`${styles.header__list} ${menuOpen ? styles.header__listOpen : ''}`}
       >
         <a className={styles.header__link} href="#marketplace">
-          Marketplace
+          {t('layout.header.menu.marketplace')}
         </a>
         <a className={styles.header__link} href="#rankings">
-          Rankings
+          {t('layout.header.menu.rankings')}
         </a>
         <a className={styles.header__link} href="#connect_a_wallet">
-          Connect a wallet
+          {t('layout.header.menu.connectWallet')}
         </a>
-        <Button icon={UserIcon} text="Sign Up" />
+        <Button icon={UserIcon} text={t('layout.header.menu.buttonText')} />
       </motion.nav>
+      <button onClick={() => changeLanguage('en')}>English</button>
+      <button onClick={() => changeLanguage('pl')}>Polish</button>
 
       {/* <motion.nav initial={false} animate={isOpen ? 'open' : 'closed'} custom={height} ref={containerRef}>
         <motion.div className="background" variants={sidebar} />
