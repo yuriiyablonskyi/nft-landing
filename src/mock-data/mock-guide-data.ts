@@ -1,27 +1,24 @@
 import { CollectionImg, EarningImg, WalletImg } from '../assets/images'
 
 import { Guide } from '../../types'
-import { useTranslation } from 'react-i18next'
-
-const { t } = useTranslation()
 
 export const GuideData: Guide[] = [
   {
     id: 1,
     icon: WalletImg,
-    title: 'Setup Your wallet',
-    text: 'Set up your wallet of choice. Connect it to the Animarket by clicking the wallet icon in the top right corner.',
+    title: 'sections.guideSection.items.wallet.title',
+    text: 'sections.guideSection.items.wallet.text',
   },
   {
     id: 2,
     icon: CollectionImg,
-    title: 'Create Collection',
-    text: 'Upload your work and setup your collection. Add a description, social links and floor price.',
+    title: 'sections.guideSection.items.collection.title',
+    text: 'sections.guideSection.items.collection.text',
   },
   {
     id: 3,
     icon: EarningImg,
-    title: 'Start Earning',
-    text: 'Choose between auctions and fixed-price listings. Start earning by selling your NFTs or trading others.',
+    title: 'sections.guideSection.items.earning.title',
+    text: 'sections.guideSection.items.earning.text',
   },
 ]

@@ -18,7 +18,7 @@ const GallerySection: FC = () => {
           <div className={styles.galleryList}>
             {galleryData.map(({ id, mainImg, miniImgs, title, username, userIcon }) => (
               <div key={id} className={styles.galleryList__item}>
-                <img src={mainImg} className={styles.galleryList__mainImg} alt={title} />
+                <img src={mainImg} className={styles.galleryList__mainImg} alt={t(title)} />
                 <div className={styles.galleryList__images}>
                   {miniImgs.map((miniImg, idx) => (
                     <img key={idx} src={miniImg} className={styles.galleryList__miniImg} alt={title} />
@@ -28,7 +28,7 @@ const GallerySection: FC = () => {
                   </a>
                 </div>
                 <div className={styles.galleryList__info}>
-                  <h4 className={styles.galleryList__title}>{title}</h4>
+                  <h4 className={styles.galleryList__title}>{t(title)}</h4>
                   <p className={styles.galleryList__username}>
                     <img src={userIcon} className={styles.galleryList__userIcon} alt={username} />
                     <span className={styles.galleryList__userLabel}>{username}</span>

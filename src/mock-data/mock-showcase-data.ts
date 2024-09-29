@@ -9,13 +9,11 @@ import {
   SpaceWithKidImg,
 } from '../assets/images'
 
-const { t } = useTranslation()
-
 export const showcaseData: Showcase[] = [
   {
     id: 1,
     img: GalacticExplorerImg,
-    title: 'Distant Galaxy',
+    title: 'sections.showcaseSection.items.distantGalaxy.label',
     icon: JuanieImg,
     username: 'MoonDancer',
     price: '1.63 ETH',
@@ -24,7 +22,7 @@ export const showcaseData: Showcase[] = [
   {
     id: 2,
     img: SpaceWithKidImg,
-    title: 'Life On Edena',
+    title: 'sections.showcaseSection.items.lifeOnEdena.label',
     icon: BlueWhaleImg,
     username: 'NebulaKid',
     price: '0.21 ETH',
@@ -33,7 +31,7 @@ export const showcaseData: Showcase[] = [
   {
     id: 3,
     img: AstronautGirl,
-    title: 'AstroFiction',
+    title: 'sections.showcaseSection.items.astroFiction.label',
     icon: DotguImg,
     username: 'Spaceone',
     price: '4.57 ETH',

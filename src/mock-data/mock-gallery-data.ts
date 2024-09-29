@@ -1,4 +1,3 @@
-import { useTranslation } from 'react-i18next'
 import { GalleryItem } from '../../types'
 
 import {
@@ -16,14 +15,12 @@ import {
   ShroomieImg,
 } from '../assets/images'
 
-const { t } = useTranslation()
-
 export const galleryData: GalleryItem[] = [
   {
     id: 1,
     mainImg: DogImg,
     miniImgs: [CatImg, BearImg],
-    title: t('sections.gallerySection.items.dsgnAnimals.label'),
+    title: 'sections.gallerySection.items.dsgnAnimals.label',
     username: 'MrFox',
     userIcon: MrFoxImg,
   },
@@ -31,7 +28,7 @@ export const galleryData: GalleryItem[] = [
     id: 2,
     mainImg: PsychodelicImg,
     miniImgs: [Psychodelic1Img, Psychodelic2Img],
-    title: t('sections.gallerySection.items.magicMushrooms.label'),
+    title: 'sections.gallerySection.items.magicMushrooms.label',
     username: 'Shroomie',
     userIcon: ShroomieImg,
   },
@@ -39,7 +36,7 @@ export const galleryData: GalleryItem[] = [
     id: 3,
     mainImg: RobotImg,
     miniImgs: [Robot1Img, Robot2Img],
-    title: t('sections.gallerySection.items.discoMachines.label'),
+    title: 'sections.gallerySection.items.discoMachines.label',
     username: 'Robotica',
     userIcon: RoboticaImg,
   },

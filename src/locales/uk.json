@@ -122,6 +122,17 @@
       "cardInfo": {
         "price": "ціна",
         "highestBid": "Найвища ставка"
+      },
+      "items": {
+        "distantGalaxy": {
+          "label": "Далека Галактика"
+        },
+        "lifeOnEdena": {
+          "label": "Життя на Едені"
+        },
+        "astroFiction": {
+          "label": "Астро Фантастика"
+        }
       }
     },
     "countdownSection": {

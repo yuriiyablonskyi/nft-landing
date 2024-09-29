@@ -57,15 +57,15 @@
 .сostWrapper
   @include flex(space-between, center)
 
-  &__label,
-  &__labelRight
+  &__highestBid
+    text-align: right
+
+  &__label
     font-family: 'Space Mono', system-ui
     font-size: 12px
+    text-transform: capitalize
     color: $silver
     margin-bottom: 4px
-
-  &__labelRight
-    text-align: right
 
   &__value
     font-family: 'Space Mono', system-ui

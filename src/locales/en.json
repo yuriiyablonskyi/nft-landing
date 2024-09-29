@@ -35,10 +35,7 @@
         "title": "Join our weekly digest",
         "description": "Get exclusive promotions & updates straight to your inbox",
         "form": {
-          "input": {
-            "placeholder": "Enter your email here",
-            "ariaLabel": "Email"
-          },
+          "inputPlaceholder": "Enter your email here",
           "buttonText": "Subscribe"
         }
       }
@@ -125,6 +122,17 @@
       "cardInfo": {
         "price": "price",
         "highestBid": "Highest Bid"
+      },
+      "items": {
+        "distantGalaxy": {
+          "label": "Distant Galaxy"
+        },
+        "lifeOnEdena": {
+          "label": "Life On Edena"
+        },
+        "astroFiction": {
+          "label": "Astro Fiction"
+        }
       }
     },
     "countdownSection": {

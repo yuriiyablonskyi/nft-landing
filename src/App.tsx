@@ -1,3 +1,4 @@
+import Select from './components/common/select/Select'
 import Footer from './components/layout/footer/Footer'
 import Header from './components/layout/header/Header'
 import CategoriesSection from './components/sections/categories-section/CategoriesSection'
@@ -10,19 +11,24 @@ import ShowcaseSection from './components/sections/showcase-section/ShowcaseSect
 import SubscriptionSection from './components/sections/subscription-section'
 import './styles/global.sass'
 
+const options = [
+  { value: 'en', label: 'en' },
+  { value: 'uk', label: 'uk' },
+  { value: 'pl', label: 'pl' },
+]
+
 function App() {
+  const handleChange = value => {
+    console.log('Selected:', value)
+  }
+
   return (
     <>
-      <Header />
-      <HeroSection />
-      <GallerySection />
-      <CreatorsSection />
-      <CategoriesSection />
-      <ShowcaseSection />
-      <CountdownSection />
-      <GuideSection />
-      <SubscriptionSection />
-      <Footer />
+      <Select options={options} defaultOption="en" onChange={handleChange} />
+      {/* <Option value="en">EN</Option>
+        <Option value="uk">UK</Option>
+        <Option value="pl">PL</Option>
+      </Select> */}
     </>
   )
 }

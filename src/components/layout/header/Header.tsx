@@ -96,8 +96,9 @@ const Header: FC = () => {
         </a>
         <Button icon={UserIcon} text={t('layout.header.menu.buttonText')} />
       </motion.nav>
-      <button onClick={() => changeLanguage('en')}>English</button>
-      <button onClick={() => changeLanguage('pl')}>Polish</button>
+      <button onClick={() => changeLanguage('en')}>EN</button>
+      <button onClick={() => changeLanguage('pl')}>PL</button>
+      <button onClick={() => changeLanguage('uk')}>UK</button>
 
       {/* <motion.nav initial={false} animate={isOpen ? 'open' : 'closed'} custom={height} ref={containerRef}>
         <motion.div className="background" variants={sidebar} />

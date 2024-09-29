@@ -5,31 +5,34 @@ import Button from '../../common/button/Button'
 import Container from '../../common/container/Container.tsx'
 import SectionHeader from '../../common/section-header/SectionHeader.tsx'
 import styles from './SubscriptionSection.module.sass'
+import { useTranslation } from 'react-i18next'
 
-const SubscriptionSection: FC = () => (
-  <section className={styles.wrapper}>
-    <Container>
-      <div className={styles.subscription}>
-        <img className={styles.subscription__img} src={AstronautNewspaperImg} alt="Astronaut" />
-        <div className={styles.subscription__content}>
-          <SectionHeader
-            title="Join our weekly digest"
-            subtitle="Get exclusive promotions & updates straight to your inbox."
-          />
-          <form className={styles.subscription__form}>
-            <input
-              type="email"
-              placeholder="Enter your email here"
-              className={styles.subscription__input}
-              required
-              aria-label="Email"
+const SubscriptionSection: FC = () => {
+  const { t } = useTranslation()
+  return (
+    <section className={styles.wrapper}>
+      <Container>
+        <div className={styles.subscription}>
+          <img className={styles.subscription__img} src={AstronautNewspaperImg} alt="Astronaut" />
+          <div className={styles.subscription__content}>
+            <SectionHeader
+              title={t('sections.subscriptionSection.header.title')}
+              subtitle={t('sections.subscriptionSection.header.subtitle')}
             />
-            <Button icon={EnvelopeIcon} text="Subscribe" type="submit" />
-          </form>
+            <form className={styles.subscription__form}>
+              <input
+                type="email"
+                placeholder={t('sections.subscriptionSection.form.inputPlaceholder')}
+                className={styles.subscription__input}
+                required
+                aria-label="Email"
+              />
+              <Button icon={EnvelopeIcon} text={t('sections.subscriptionSection.form.buttonText')} type="submit" />
+            </form>
+          </div>
         </div>
-      </div>
-    </Container>
-  </section>
-)
-
+      </Container>
+    </section>
+  )
+}
 export default SubscriptionSection

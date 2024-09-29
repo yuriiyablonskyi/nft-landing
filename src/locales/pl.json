@@ -122,6 +122,17 @@
       "cardInfo": {
         "price": "cena",
         "highestBid": "Najwyższa oferta"
+      },
+      "items": {
+        "distantGalaxy": {
+          "label": "Odległa Galaktyka"
+        },
+        "lifeOnEdena": {
+          "label": "Życie na Edenie"
+        },
+        "astroFiction": {
+          "label": "Astro Fikcja"
+        }
       }
     },
     "countdownSection": {

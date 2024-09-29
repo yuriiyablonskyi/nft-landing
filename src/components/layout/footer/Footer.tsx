@@ -15,9 +15,7 @@ const Footer: FC = () => {
             <a href="#" className={styles.footer__logo}>
               <img src={LogoIcon} alt={t('layout.footer.logo.logoAlt')} />
             </a>
-            <a href="#" className={styles.footer__link}>
-              {t('layout.footer.logo.logoAlt')}
-            </a>
+            <p className={styles.footer__text}>{t('layout.footer.logo.description')}</p>
 
             <div className={styles.footer__social}>
               <p className={styles.footer__text}>{t('layout.footer.social.joinCommunity')}</p>
@@ -69,10 +67,10 @@ const Footer: FC = () => {
             <form className={styles.footer__form}>
               <input
                 type="email"
-                placeholder={t('layout.footer.newsletter.form.input.placeholder')}
+                placeholder={t('layout.footer.newsletter.form.inputPlaceholder')}
                 className={styles.footer__input}
                 required
-                aria-label={t('layout.footer.newsletter.form.input.ariaLabel')}
+                aria-label="Email"
               />
               <Button icon={EnvelopeIcon} text={t('layout.footer.newsletter.form.buttonText')} type="submit" />
             </form>

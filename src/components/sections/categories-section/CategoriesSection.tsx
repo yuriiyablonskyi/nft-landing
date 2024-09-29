@@ -19,7 +19,7 @@ const CategoriesSection: FC = () => {
                   <div className={styles.categoriesList__blurOverlay}></div>
                   <img src={icon} className={styles.categoriesList__icon} alt={label} />
                 </div>
-                <p className={styles.categoriesList__label}>{label}</p>
+                <p className={styles.categoriesList__label}>{t(label)}</p>
               </a>
             ))}
           </div>

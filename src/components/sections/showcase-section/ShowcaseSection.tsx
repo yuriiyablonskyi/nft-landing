@@ -20,9 +20,9 @@ const ShowcaseSection: FC = () => {
           <div className={styles.showcaseList}>
             {showcaseData.map(({ id, img, title, icon, username, price, highestBid }) => (
               <div key={id} className={styles.showcaseList__item}>
-                <img className={styles.showcaseList__img} src={img} alt={title} />
+                <img className={styles.showcaseList__img} src={img} alt={t(title)} />
                 <div className={styles.showcaseList__info}>
-                  <h4 className={styles.showcaseList__title}>{title}</h4>
+                  <h4 className={styles.showcaseList__title}>{t(title)}</h4>
                   <div className={styles.showcaseList__user}>
                     <img className={styles.showcaseList__userIcon} src={icon} alt={username} />
                     <span className={styles.showcaseList__userLabel}>{username}</span>
@@ -33,9 +33,7 @@ const ShowcaseSection: FC = () => {
                       <p className={styles.сostWrapper__value}>{price}</p>
                     </div>
                     <div className={styles.сostWrapper__highestBid}>
-                      <p className={styles.сostWrapper__labelRight}>
-                        {t('sections.showcaseSection.cardInfo.highestBid')}
-                      </p>
+                      <p className={styles.сostWrapper__label}>{t('sections.showcaseSection.cardInfo.highestBid')}</p>
                       <p className={styles.сostWrapper__value}>{highestBid}</p>
                     </div>
                   </div>

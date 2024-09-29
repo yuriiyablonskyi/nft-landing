@@ -33,7 +33,7 @@ const CreatorsSection: FC = () => {
             ))}
           </div>
           <div className={styles.buttonCenter}>
-            <Button icon={RocketLaunchIcon} text={t('sections.gallerySection.buttonText')} />
+            <Button icon={RocketLaunchIcon} text={t('sections.creatorsSection.buttonText')} />
           </div>
         </div>
       </Container>
