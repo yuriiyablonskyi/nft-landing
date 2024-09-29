@@ -1,50 +1,34 @@
-import React, { ReactNode, useState, useRef, FC, useEffect } from 'react'
+import { useState, FC } from 'react'
+import styles from './Select.module.sass'
+import { InternetIcon } from '../../../assets/icons'
 
-const Select = ({ options, defaultOption, onChange }) => {
-  // State to manage the selected value and dropdown visibility
+const Select: FC = ({ options, defaultOption, onChange }) => {
   const [selectedValue, setSelectedValue] = useState(defaultOption)
   const [isOpen, setIsOpen] = useState(false)
-  const selectRef = useRef(null)
 
-  // Handle dropdown toggle
   const toggleDropdown = () => {
     setIsOpen(!isOpen)
   }
 
-  // useEffect(() => {
-  //   const handleClickOutside = event => {
-  //     if (selectRef.current && !selectRef.current.contains(event.target)) {
-  //       setIsOpen(false) // Close dropdown if clicked outside
-  //     }
-  //   }
-
-  //   document.addEventListener('mousedown', handleClickOutside)
-
-  //   // Cleanup event listener on component unmount
-  //   return () => {
-  //     document.removeEventListener('mousedown', handleClickOutside)
-  //   }
-  // }, [])
-
-  // Handle option selection
   const handleOptionSelect = option => {
-    setSelectedValue(option.label)
-    setIsOpen(false) // Close dropdown after selection
+    setSelectedValue(option)
+    setIsOpen(false)
     if (onChange) {
-      onChange(option.value) // Trigger onChange callback if provided
+      onChange(option.value)
     }
   }
 
   return (
-    <div className="custom-select-container">
-      <div onClick={toggleDropdown} className="select-display">
-        {selectedValue || 'Select...'}
+    <div className={styles.wrapper}>
+      <div onClick={toggleDropdown} className={styles.select}>
+        <img src={InternetIcon} alt="" className={styles.select__icon} />
+        <span className={styles.select__value}>{selectedValue.value}</span>
       </div>
 
       {isOpen && (
-        <ul className="select-dropdown">
+        <ul className={styles.select__menu}>
           {options.map(option => (
-            <li key={option.value} onClick={() => handleOptionSelect(option)} className="li">
+            <li key={option.value} onClick={() => handleOptionSelect(option)} className={styles.select__item}>
               {option.label}
             </li>
           ))}

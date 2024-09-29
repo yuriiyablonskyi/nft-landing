@@ -9,17 +9,12 @@ import { motion, sync, useCycle } from 'framer-motion'
 import { MenuToggle } from './MenuToggle'
 import { Navigation } from './Navigation'
 
+import Select from '../../common/select/Select'
+
 const Header: FC = () => {
-  const { t, i18n } = useTranslation()
-
-  const changeLanguage = (lang: string) => {
-    console.log(lang)
-
-    i18n.changeLanguage(lang)
-  }
-
   const [menuOpen, setMenuOpen] = useState<boolean>(false)
   const [scrolled, setScrolled] = useState(false)
+  const { t, i18n } = useTranslation()
 
   const toggleMenu = () => setMenuOpen(!menuOpen)
   useEffect(() => {
@@ -72,6 +67,14 @@ const Header: FC = () => {
   //   },
   // }
 
+  const options = [
+    { value: 'en', label: 'English' },
+    { value: 'uk', label: 'Українська' },
+    { value: 'pl', label: 'Polski' },
+  ]
+
+  const handleChange = (lang: string) => i18n.changeLanguage(lang)
+
   const Path = props => (
     <motion.path fill="transparent" strokeWidth="3" stroke="hsl(0, 0%, 18%)" strokeLinecap="round" {...props} />
   )
@@ -94,11 +97,9 @@ const Header: FC = () => {
         <a className={styles.header__link} href="#connect_a_wallet">
           {t('layout.header.menu.connectWallet')}
         </a>
+        <Select options={options} defaultOption={options[0]} onChange={handleChange} />
         <Button icon={UserIcon} text={t('layout.header.menu.buttonText')} />
       </motion.nav>
-      <button onClick={() => changeLanguage('en')}>EN</button>
-      <button onClick={() => changeLanguage('pl')}>PL</button>
-      <button onClick={() => changeLanguage('uk')}>UK</button>
 
       {/* <motion.nav initial={false} animate={isOpen ? 'open' : 'closed'} custom={height} ref={containerRef}>
         <motion.div className="background" variants={sidebar} />
@@ -107,7 +108,7 @@ const Header: FC = () => {
       {/* <MenuToggle toggle={() => toggleOpen()} /> */}
       {/* </motion.nav> */}
 
-      <button onClick={toggleMenu}>
+      {/* <button onClick={toggleMenu}>
         <svg width="23" height="23" viewBox="0 0 23 23">
           <Path
             variants={{
@@ -130,7 +131,7 @@ const Header: FC = () => {
             }}
           />
         </svg>
-      </button>
+      </button> */}
       {/* <motion.button
         whileHover={{
           scale: 1.2,
