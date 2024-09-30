@@ -1,28 +1,50 @@
-import { useState, FC } from 'react'
+import { useState, FC, useEffect, useRef } from 'react'
 import styles from './Select.module.sass'
 import { InternetIcon } from '../../../assets/icons'
 
-const Select: FC = ({ options, defaultOption, onChange }) => {
-  const [selectedValue, setSelectedValue] = useState(defaultOption)
+interface SelectProps {
+  options: { value: string; label: string }[]
+  selectedLanguageValue: string
+  onChangeLanguage: (option: { value: string; label: string }) => void
+}
+
+const Select: FC<SelectProps> = ({ options, selectedLanguageValue, onChangeLanguage }) => {
   const [isOpen, setIsOpen] = useState(false)
+  const selectRef = useRef<HTMLDivElement>(null)
 
+  // Toggle dropdown open/close
   const toggleDropdown = () => {
-    setIsOpen(!isOpen)
+    setIsOpen(prev => !prev)
   }
 
-  const handleOptionSelect = option => {
-    setSelectedValue(option)
+  // Close the dropdown when an option is selected
+  const handleOptionSelect = (option: { value: string; label: string }) => {
     setIsOpen(false)
-    if (onChange) {
-      onChange(option.value)
-    }
+    onChangeLanguage(option)
   }
+
+  // Handle clicks outside the select menu to close it
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (selectRef.current && !selectRef.current.contains(event.target as Node)) {
+        setIsOpen(false)
+      }
+    }
+
+    // Add the event listener to detect outside clicks
+    document.addEventListener('mousedown', handleClickOutside)
+
+    // Cleanup the event listener when the component unmounts
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [])
 
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapper} ref={selectRef}>
       <div onClick={toggleDropdown} className={styles.select}>
         <img src={InternetIcon} alt="" className={styles.select__icon} />
-        <span className={styles.select__value}>{selectedValue.value}</span>
+        <span className={styles.select__value}>{selectedLanguageValue}</span>
       </div>
 
       {isOpen && (
@@ -37,4 +59,5 @@ const Select: FC = ({ options, defaultOption, onChange }) => {
     </div>
   )
 }
+
 export default Select
