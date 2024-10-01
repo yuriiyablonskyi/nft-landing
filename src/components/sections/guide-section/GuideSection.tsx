@@ -1,12 +1,14 @@
 import { FC } from 'react'
-import { GuideData } from '../../../mock-data/mock-guide-data'
+import { useGuideData } from '../../../mock-data/mock-guide-data'
 import Container from '../../common/container/Container.tsx'
 import SectionHeader from '../../common/section-header/SectionHeader.tsx'
 import styles from './GuideSection.module.sass'
 import { useTranslation } from 'react-i18next'
+import { Guide } from '../../../../types/data'
 
 const GuideSection: FC = () => {
   const { t } = useTranslation()
+  const GuideData: Guide[] = useGuideData()
   return (
     <section>
       <Container>

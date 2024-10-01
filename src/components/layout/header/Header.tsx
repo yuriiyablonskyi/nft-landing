@@ -4,7 +4,7 @@ import Button from '../../common/button/Button'
 import styles from './Header.module.sass'
 import { useTranslation } from 'react-i18next'
 import Select from '../../common/select/Select'
-import i18n from '../../../i18n'
+// import i18n from '../../../i18n'
 import { LanguageOption } from '../../../../types'
 
 const Header: FC = () => {
@@ -12,7 +12,7 @@ const Header: FC = () => {
   const [scrolled, setScrolled] = useState(false)
   const { t, i18n } = useTranslation()
 
-  const toggleMenu = () => setMenuOpen(!menuOpen)
+  // const toggleMenu = () => setMenuOpen(!menuOpen)
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY

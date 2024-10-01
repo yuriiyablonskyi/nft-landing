@@ -1,12 +1,14 @@
 import { FC } from 'react'
-import { galleryData } from '../../../mock-data/mock-gallery-data'
+import { useGalleryData } from '../../../mock-data/use-gallery-data.ts'
 import Container from '../../common/container/Container.tsx'
 import SectionHeader from '../../common/section-header/SectionHeader.tsx'
 import styles from './GallerySection.module.sass'
 import { useTranslation } from 'react-i18next'
+import { GalleryItem } from '../../../../types/data'
 
 const GallerySection: FC = () => {
   const { t } = useTranslation()
+  const galleryData: GalleryItem[] = useGalleryData()
   return (
     <section>
       <Container>
