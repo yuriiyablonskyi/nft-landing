@@ -1,15 +1,16 @@
 import { useState, FC, useEffect, useRef } from 'react'
 import styles from './Select.module.sass'
 import { InternetIcon } from '../../../assets/icons'
+import { LanguageOption } from '../../../../types'
 
 interface SelectProps {
-  options: { value: string; label: string }[]
+  options: LanguageOption[]
   selectedLanguageValue: string
-  onChangeLanguage: (option: { value: string; label: string }) => void
+  onChangeLanguage: (option: LanguageOption) => void
 }
 
 const Select: FC<SelectProps> = ({ options, selectedLanguageValue, onChangeLanguage }) => {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState<boolean>(false)
   const selectRef = useRef<HTMLDivElement>(null)
 
   // Toggle dropdown open/close

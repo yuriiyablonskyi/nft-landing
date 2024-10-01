@@ -28,30 +28,34 @@ const Header: FC = () => {
     }
   }, [])
 
-  // const { t, i18n } = useTranslation()
-
   const options: LanguageOption[] = [
     { value: 'en', label: 'English' },
     { value: 'uk', label: 'Українська' },
     { value: 'pl', label: 'Polski' },
   ]
 
-  // Helper function to fetch the initial language from localStorage
+  const defaultLanguage = 'en'
+
   const getInitialLanguage = (): LanguageOption => {
-    const storedLanguage = localStorage.getItem('language') || 'en'
+    console.log('getInitialLanguage')
+    const storedLanguage = localStorage.getItem('language') || defaultLanguage
+    console.log({ storedLanguage })
+
+    console.log(options.find(option => option.value === storedLanguage) || { value: 'en', label: 'English' })
     return options.find(option => option.value === storedLanguage) || { value: 'en', label: 'English' }
   }
 
   const [selectedLanguage, setSelectedLanguage] = useState<LanguageOption>(getInitialLanguage)
 
-  // Ensure i18next uses the correct language on initial load
   useEffect(() => {
-    const storedLanguage = localStorage.getItem('language') || 'en'
+    console.log('useefect')
+
+    const storedLanguage = localStorage.getItem('language') || defaultLanguage
     i18n.changeLanguage(storedLanguage)
   }, [i18n])
 
-  // Handle language change and sync both state and i18next
   const handleChangeLanguage = (selectedOption: LanguageOption) => {
+    console.log('handleChangeLanguage')
     setSelectedLanguage(selectedOption)
     i18n.changeLanguage(selectedOption.value).then(() => {
       localStorage.setItem('language', selectedOption.value)
