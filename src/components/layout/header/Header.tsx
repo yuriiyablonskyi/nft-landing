@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next'
 import Select from '../../common/select/Select'
 // import i18n from '../../../i18n'
 import { LanguageOption } from '../../../../types'
+import { motion } from 'framer-motion'
 
 const Header: FC = () => {
   const [menuOpen, setMenuOpen] = useState<boolean>(false)
@@ -62,21 +63,83 @@ const Header: FC = () => {
     })
   }
 
+  const [isOpen, setIsOpen] = useState(false)
+
+  // Toggle the menu open/close
+  const toggleMenu = () => setIsOpen(prev => !prev)
+
+  // Animation variants for the hamburger icon
+  const iconVariants = {
+    closed: { rotate: 0 },
+    open: { rotate: 45 },
+  }
+
+  // Animation variants for the navigation menu
+  const menuVariants = {
+    hidden: { x: '100%' },
+    visible: { x: '0%' },
+  }
+
+  // Handle animations for each line of the hamburger icon
+  const topLineVariants = {
+    closed: { rotate: 0, y: 0 },
+    open: { rotate: 45, y: 6 },
+  }
+
+  const middleLineVariants = {
+    closed: { opacity: 1 },
+    open: { opacity: 0 },
+  }
+
+  const bottomLineVariants = {
+    closed: { rotate: 0, y: 0 },
+    open: { rotate: -45, y: -6 },
+  }
+
   return (
-    <header className={`${styles.header} ${scrolled ? styles.headerScrolled : ''}`}>
+    <motion.header
+      animate={{
+        boxShadow: scrolled ? '0 8px 20px 0 rgba(0, 0, 0, 0.5)' : 'none',
+      }}
+      className={styles.header}
+    >
       <a href="#" className={styles.header__logo}>
         <img src={LogoIcon} alt={t('layout.header.logoAlt')} className={styles.header__logoImg} />
       </a>
       <nav className={`${styles.header__list} ${menuOpen ? styles.header__listOpen : ''}`}>
-        <a className={styles.header__link} href="#marketplace">
+        <motion.a
+          whileHover={{
+            y: -2,
+            color: '#A259FF',
+            transition: { duration: 0.3 },
+          }}
+          className={styles.header__link}
+          href="#marketplace"
+        >
           {t('layout.header.menu.marketplace')}
-        </a>
-        <a className={styles.header__link} href="#rankings">
+        </motion.a>
+        <motion.a
+          whileHover={{
+            y: -2,
+            color: '#A259FF',
+            transition: { duration: 0.3 },
+          }}
+          className={styles.header__link}
+          href="#rankings"
+        >
           {t('layout.header.menu.rankings')}
-        </a>
-        <a className={styles.header__link} href="#connect_a_wallet">
+        </motion.a>
+        <motion.a
+          whileHover={{
+            y: -2,
+            color: '#A259FF',
+            transition: { duration: 0.3 },
+          }}
+          className={styles.header__link}
+          href="#connect_a_wallet"
+        >
           {t('layout.header.menu.connectWallet')}
-        </a>
+        </motion.a>
         <Select
           options={options}
           selectedLanguageValue={selectedLanguage.value}
@@ -84,7 +147,28 @@ const Header: FC = () => {
         />
         <Button icon={UserIcon} text={t('layout.header.menu.buttonText')} />
       </nav>
-    </header>
+
+      <div className={styles.burgerMenu} onClick={toggleMenu}>
+        <motion.div
+          className={styles.line}
+          variants={topLineVariants}
+          initial="closed"
+          animate={isOpen ? 'open' : 'closed'}
+        />
+        <motion.div
+          className={styles.line}
+          variants={middleLineVariants}
+          initial="closed"
+          animate={isOpen ? 'open' : 'closed'}
+        />
+        <motion.div
+          className={styles.line}
+          variants={bottomLineVariants}
+          initial="closed"
+          animate={isOpen ? 'open' : 'closed'}
+        />
+      </div>
+    </motion.header>
   )
 }
 
