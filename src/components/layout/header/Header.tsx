@@ -4,7 +4,6 @@ import Button from '../../common/button/Button'
 import styles from './Header.module.sass'
 import { useTranslation } from 'react-i18next'
 import Select from '../../common/select/Select'
-// import i18n from '../../../i18n'
 import { LanguageOption } from '../../../../types'
 import { motion } from 'framer-motion'
 
@@ -13,7 +12,8 @@ const Header: FC = () => {
   const [scrolled, setScrolled] = useState(false)
   const { t, i18n } = useTranslation()
 
-  // const toggleMenu = () => setMenuOpen(!menuOpen)
+  const toggleMenu = () => setMenuOpen(prevMenuOpen => !prevMenuOpen)
+
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY
@@ -38,52 +38,32 @@ const Header: FC = () => {
   const defaultLanguage = 'en'
 
   const getInitialLanguage = (): LanguageOption => {
-    console.log('getInitialLanguage')
     const storedLanguage = localStorage.getItem('language') || defaultLanguage
-    console.log({ storedLanguage })
-
-    console.log(options.find(option => option.value === storedLanguage) || { value: 'en', label: 'English' })
     return options.find(option => option.value === storedLanguage) || { value: 'en', label: 'English' }
   }
 
   const [selectedLanguage, setSelectedLanguage] = useState<LanguageOption>(getInitialLanguage)
 
   useEffect(() => {
-    console.log('useefect')
-
     const storedLanguage = localStorage.getItem('language') || defaultLanguage
     i18n.changeLanguage(storedLanguage)
   }, [i18n])
 
   const handleChangeLanguage = (selectedOption: LanguageOption) => {
-    console.log('handleChangeLanguage')
     setSelectedLanguage(selectedOption)
     i18n.changeLanguage(selectedOption.value).then(() => {
       localStorage.setItem('language', selectedOption.value)
     })
   }
 
-  const [isOpen, setIsOpen] = useState(false)
-
-  // Toggle the menu open/close
-  const toggleMenu = () => setIsOpen(prev => !prev)
-
-  // Animation variants for the hamburger icon
-  const iconVariants = {
-    closed: { rotate: 0 },
-    open: { rotate: 45 },
-  }
-
-  // Animation variants for the navigation menu
   const menuVariants = {
-    hidden: { x: '100%' },
-    visible: { x: '0%' },
+    hidden: { x: '100%', transition: { staggerChildren: 0.05, staggerDirection: -1 } },
+    visible: { x: '0%', transition: { staggerChildren: 0.07, delayChildren: 0.2 } },
   }
 
-  // Handle animations for each line of the hamburger icon
   const topLineVariants = {
     closed: { rotate: 0, y: 0 },
-    open: { rotate: 45, y: 6 },
+    open: { rotate: 45, y: 12 },
   }
 
   const middleLineVariants = {
@@ -93,7 +73,7 @@ const Header: FC = () => {
 
   const bottomLineVariants = {
     closed: { rotate: 0, y: 0 },
-    open: { rotate: -45, y: -6 },
+    open: { rotate: -45, y: -12 },
   }
 
   return (
@@ -106,7 +86,7 @@ const Header: FC = () => {
       <a href="#" className={styles.header__logo}>
         <img src={LogoIcon} alt={t('layout.header.logoAlt')} className={styles.header__logoImg} />
       </a>
-      <nav className={`${styles.header__list} ${menuOpen ? styles.header__listOpen : ''}`}>
+      <motion.nav variants={menuVariants} animate={menuOpen ? 'hidden' : 'visible'} className={styles.header__list}>
         <motion.a
           whileHover={{
             y: -2,
@@ -146,26 +126,26 @@ const Header: FC = () => {
           onChangeLanguage={handleChangeLanguage}
         />
         <Button icon={UserIcon} text={t('layout.header.menu.buttonText')} />
-      </nav>
+      </motion.nav>
 
       <div className={styles.burgerMenu} onClick={toggleMenu}>
         <motion.div
-          className={styles.line}
+          className={styles.burgerMenu__line}
           variants={topLineVariants}
           initial="closed"
-          animate={isOpen ? 'open' : 'closed'}
+          animate={menuOpen ? 'open' : 'closed'}
         />
         <motion.div
-          className={styles.line}
+          className={styles.burgerMenu__line}
           variants={middleLineVariants}
           initial="closed"
-          animate={isOpen ? 'open' : 'closed'}
+          animate={menuOpen ? 'open' : 'closed'}
         />
         <motion.div
-          className={styles.line}
+          className={styles.burgerMenu__line}
           variants={bottomLineVariants}
           initial="closed"
-          animate={isOpen ? 'open' : 'closed'}
+          animate={menuOpen ? 'open' : 'closed'}
         />
       </div>
     </motion.header>

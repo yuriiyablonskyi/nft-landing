@@ -80,8 +80,8 @@ const CountdownSection: React.FC = () => {
   const { hours, minutes, seconds } = useCountdown(initialHours, initialMinutes, initialSeconds)
 
   const renderDigits = (value: string) => {
-    console.log({ value })
-    console.log(typeof value)
+    // console.log({ value })
+    // console.log(typeof value)
     return String(value)
       .split('')
       .map((digit, index) => (
