@@ -26,16 +26,28 @@
     @include flex(space-between, center)
     list-style: none
     transition: $transition
+    background-color: $black
     @media (max-width: $breakpoint-medium-large)
       flex-direction: column
       width: 100%
       padding: 60px 30px
       position: absolute
-      z-index: 150
+      z-index: 2
       top: 100px
       margin-bottom: 50px
-      left: -100%
-      background-color: $gray
+      left: 0
+      // background-color: $gray
+      &:before
+        position: absolute
+        content: ''
+        top: 100%
+        bottom: 0
+        right: 0
+        left: 0
+        height: 100%
+        width: 100%
+        backdrop-filter: blur(5px)
+        z-index: 0
 
   &__link
     color: $white
@@ -54,9 +66,11 @@
   width: 27px
   height: 27px
   cursor: pointer
-  display: flex
+  display: none
   flex-direction: column
   justify-content: space-between
+  @media (max-width: $breakpoint-medium-large)
+    display: flex
 
   &__line
     width: 100%

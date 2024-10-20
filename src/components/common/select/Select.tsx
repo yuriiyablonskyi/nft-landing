@@ -1,4 +1,5 @@
 import { useState, FC, useEffect, useRef } from 'react'
+import { motion, Variants } from 'framer-motion'
 import styles from './Select.module.sass'
 import { InternetIcon } from '../../../assets/icons'
 import { LanguageOption } from '../../../../types'
@@ -9,8 +10,43 @@ interface SelectProps {
   onChangeLanguage: (option: LanguageOption) => void
 }
 
+const menuVariants: Variants = {
+  open: {
+    clipPath: 'inset(0% 0% 0% 0% round 10px)',
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: 'spring',
+      bounce: 0,
+      duration: 0.7,
+    },
+  },
+  closed: {
+    clipPath: 'inset(0% 50% 100% 50% round 10px)',
+    opacity: 0,
+    y: -10,
+    transition: {
+      type: 'spring',
+      bounce: 0,
+      duration: 0.5,
+      delay: 0.2,
+    },
+  },
+}
+
+const itemVariants: Variants = {
+  open: {
+    opacity: 1,
+    transition: { duration: 0.5, delay: 0.35 },
+  },
+  closed: {
+    opacity: 0,
+    transition: { duration: 0.2 },
+  },
+}
+
 const Select: FC<SelectProps> = ({ options, selectedLanguageValue, onChangeLanguage }) => {
-  const [isOpen, setIsOpen] = useState<boolean>(false)
+  const [isOpen, setIsOpen] = useState(false)
   const selectRef = useRef<HTMLDivElement>(null)
 
   // Toggle dropdown open/close
@@ -19,7 +55,7 @@ const Select: FC<SelectProps> = ({ options, selectedLanguageValue, onChangeLangu
   }
 
   // Close the dropdown when an option is selected
-  const handleOptionSelect = (option: { value: string; label: string }) => {
+  const handleOptionSelect = (option: LanguageOption) => {
     setIsOpen(false)
     onChangeLanguage(option)
   }
@@ -32,10 +68,8 @@ const Select: FC<SelectProps> = ({ options, selectedLanguageValue, onChangeLangu
       }
     }
 
-    // Add the event listener to detect outside clicks
+    // Add and clean up the event listener
     document.addEventListener('mousedown', handleClickOutside)
-
-    // Cleanup the event listener when the component unmounts
     return () => {
       document.removeEventListener('mousedown', handleClickOutside)
     }
@@ -43,20 +77,29 @@ const Select: FC<SelectProps> = ({ options, selectedLanguageValue, onChangeLangu
 
   return (
     <div className={styles.wrapper} ref={selectRef}>
-      <div onClick={toggleDropdown} className={styles.select}>
+      <motion.button onClick={toggleDropdown} whileTap={{ scale: 0.9 }} className={styles.select}>
         <img src={InternetIcon} alt="" className={styles.select__icon} />
         <span className={styles.select__value}>{selectedLanguageValue}</span>
-      </div>
+      </motion.button>
 
-      {isOpen && (
-        <ul className={styles.select__menu}>
-          {options.map(option => (
-            <li key={option.value} onClick={() => handleOptionSelect(option)} className={styles.select__item}>
-              {option.label}
-            </li>
-          ))}
-        </ul>
-      )}
+      <motion.ul
+        initial={false}
+        animate={isOpen ? 'open' : 'closed'}
+        variants={menuVariants}
+        className={styles.select__menu}
+        style={{ pointerEvents: isOpen ? 'auto' : 'none' }}
+      >
+        {options.map(option => (
+          <motion.li
+            key={option.value}
+            onClick={() => handleOptionSelect(option)}
+            className={styles.select__item}
+            variants={itemVariants}
+          >
+            {option.label}
+          </motion.li>
+        ))}
+      </motion.ul>
     </div>
   )
 }
