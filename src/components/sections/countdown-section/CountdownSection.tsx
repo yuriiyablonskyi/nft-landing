@@ -7,7 +7,6 @@ import Button from '../../common/button/Button'
 import Container from '../../common/container/Container.tsx'
 import styles from './CountdownSection.module.sass'
 import { useTranslation } from 'react-i18next'
-
 import { motion, AnimatePresence } from 'framer-motion'
 
 const slideVariant = {
@@ -30,11 +29,11 @@ const slideVariant = {
   }),
 }
 
+const formatTimeValue = (value: number): string => value.toString().padStart(2, '0')
+
 const CountdownSection: FC = () => {
   const { hours, minutes, seconds }: CountdownValues = useCountdown(59, 59, 59)
   const { t } = useTranslation()
-
-  const formatTimeValue = (value: number): string => value.toString().padStart(2, '0')
 
   const renderDigits = (value: string) =>
     value.split('').map((digit, index) => (
