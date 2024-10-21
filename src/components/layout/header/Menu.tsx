@@ -17,21 +17,21 @@ interface MenuProps {
 
 const menuVariants = {
   hidden: {
-    x: '-100%', // Меню будет выезжать справа
+    x: '-100%',
     transition: {
-      when: 'afterChildren', // Элементы исчезают после того, как меню начнет исчезать
+      when: 'afterChildren',
       staggerChildren: 0.15,
       staggerDirection: -1,
       ease: 'easeInOut',
     },
   },
   visible: {
-    x: '0%', // Меню появляется в нормальном положении
+    x: '0%',
     transition: {
-      when: 'beforeChildren', // Элементы появляются после того, как меню появится
+      when: 'beforeChildren',
       staggerChildren: 0.15,
       ease: 'easeInOut',
-      duration: 0.5, // Плавность появления меню
+      duration: 0.5,
     },
   },
 }
@@ -64,7 +64,7 @@ const Menu: FC<MenuProps> = ({ menuOpen, t, selectedLanguage, options, handleCha
         onChangeLanguage={handleChangeLanguage}
       />
     </motion.div>
-    <motion.div variants={childVariants}>
+    <motion.div variants={childVariants} style={{ zIndex: '-1' }}>
       <Button icon={UserIcon} text={t('layout.header.menu.buttonText')} />
     </motion.div>
   </motion.nav>
