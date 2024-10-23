@@ -1,5 +1,5 @@
 export * from './assets'
-export * from './common'
+export * from './components'
 export * from './layout'
 export * from './data'
 export * from './globals'
