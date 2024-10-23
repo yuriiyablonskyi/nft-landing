@@ -1,13 +1,14 @@
 import { FC } from 'react'
+import { useTranslation } from 'react-i18next'
 import { RocketLaunchIcon } from '../../assets/icons'
 import { AnimakidImg, AstronautKidImg } from '../../assets/images'
 import Button from '../button/Button'
 import Container from '../container/Container'
 import styles from './HeroSection.module.sass'
-import { useTranslation } from 'react-i18next'
 
 const HeroSection: FC = () => {
   const { t } = useTranslation()
+
   return (
     <section>
       <Container>

@@ -23,7 +23,6 @@ export interface BurgerMenuProps {
 
 export interface MenuProps {
   menuOpen: boolean
-  t: any
   selectedLanguage: LanguageOption
   options: LanguageOption[]
   handleChangeLanguage: (selectedOption: LanguageOption) => void

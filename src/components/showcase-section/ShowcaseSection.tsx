@@ -1,16 +1,17 @@
 import { FC } from 'react'
+import { useTranslation } from 'react-i18next'
+import { Showcase } from '../../../types/data'
 import { EyeIcon } from '../../assets/icons'
 import { useShowcaseData } from '../../mock-data/use-showcase-data.ts'
 import Button from '../button/Button.tsx'
 import Container from '../container/Container.tsx'
 import SectionHeader from '../section-header/SectionHeader.tsx'
 import styles from './ShowcaseSection.module.sass'
-import { useTranslation } from 'react-i18next'
-import { Showcase } from '../../../types/data'
 
 const ShowcaseSection: FC = () => {
   const { t } = useTranslation()
   const showcaseData: Showcase[] = useShowcaseData()
+
   return (
     <section>
       <Container>

@@ -1,16 +1,33 @@
+import { motion } from 'framer-motion'
 import { FC } from 'react'
+import { useTranslation } from 'react-i18next'
+import { Guide } from '../../../types/data'
+import useElementInView from '../../hooks/useInViewObserver.ts'
 import { useGuideData } from '../../mock-data/mock-guide-data'
 import Container from '../container/Container.tsx'
 import SectionHeader from '../section-header/SectionHeader.tsx'
 import styles from './GuideSection.module.sass'
-import { useTranslation } from 'react-i18next'
-import { Guide } from '../../../types/data'
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.3,
+      duration: 0.6,
+      ease: 'easeInOut',
+    },
+  }),
+}
 
 const GuideSection: FC = () => {
   const { t } = useTranslation()
-  const GuideData: Guide[] = useGuideData()
+  const guideData: Guide[] = useGuideData()
+  const [targetRef, isInView] = useElementInView({ threshold: 0.3 })
+
   return (
-    <section>
+    <section ref={targetRef}>
       <Container>
         <div className={styles.wrapper}>
           <SectionHeader
@@ -18,14 +35,21 @@ const GuideSection: FC = () => {
             subtitle={t('sections.guideSection.header.subtitle')}
           />
           <div className={styles.guideList}>
-            {GuideData.map(({ id, icon, title, text }) => (
-              <div key={id} className={styles.guideList__item}>
+            {guideData.map(({ id, icon, title, text }, index) => (
+              <motion.div
+                key={id}
+                className={styles.guideList__item}
+                custom={index}
+                initial="hidden"
+                animate={isInView ? 'visible' : 'hidden'}
+                variants={cardVariants}
+              >
                 <img className={styles.guideList__img} src={icon} alt={t(title)} />
                 <div className={styles.guideList__info}>
                   <h4 className={styles.guideList__title}>{t(title)}</h4>
                   <p className={styles.guideList__text}>{t(text)}</p>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>

@@ -1,9 +1,8 @@
-import { useState, FC, useEffect, useRef } from 'react'
-import { motion, Variants } from 'framer-motion'
-import styles from './Select.module.sass'
+import { Variants, motion } from 'framer-motion'
+import { FC, useEffect, useRef, useState } from 'react'
+import { LanguageOption, SelectProps } from '../../../types'
 import { InternetIcon } from '../../assets/icons'
-import { LanguageOption } from '../../../types'
-import { SelectProps } from '../../../types'
+import styles from './Select.module.sass'
 
 const menuVariants: Variants = {
   open: {
@@ -41,21 +40,16 @@ const itemVariants: Variants = {
 }
 
 const Select: FC<SelectProps> = ({ options, selectedLanguageValue, onChangeLanguage }) => {
-  const [isOpen, setIsOpen] = useState(false)
-  const selectRef = useRef<HTMLDivElement>(null)
+  const [isOpen, setIsOpen] = useState<boolean>(false)
+  const selectRef = useRef<HTMLDivElement | null>(null)
 
-  // Toggle dropdown open/close
-  const toggleDropdown = () => {
-    setIsOpen(prev => !prev)
-  }
+  const toggleDropdown = () => setIsOpen(prev => !prev)
 
-  // Close the dropdown when an option is selected
   const handleOptionSelect = (option: LanguageOption) => {
     setIsOpen(false)
     onChangeLanguage(option)
   }
 
-  // Handle clicks outside the select menu to close it
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (selectRef.current && !selectRef.current.contains(event.target as Node)) {
@@ -63,7 +57,6 @@ const Select: FC<SelectProps> = ({ options, selectedLanguageValue, onChangeLangu
       }
     }
 
-    // Add and clean up the event listener
     document.addEventListener('mousedown', handleClickOutside)
     return () => {
       document.removeEventListener('mousedown', handleClickOutside)

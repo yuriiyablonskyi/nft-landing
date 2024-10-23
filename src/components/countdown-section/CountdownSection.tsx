@@ -1,4 +1,6 @@
+import { AnimatePresence, motion } from 'framer-motion'
 import { FC } from 'react'
+import { useTranslation } from 'react-i18next'
 import { CountdownValues } from '../../../types/hooks'
 import { EyePurpleIcon } from '../../assets/icons'
 import { ShroomieImg } from '../../assets/images'
@@ -6,8 +8,6 @@ import { useCountdown } from '../../hooks/useCountdown'
 import Button from '../button/Button'
 import Container from '../container/Container'
 import styles from './CountdownSection.module.sass'
-import { useTranslation } from 'react-i18next'
-import { motion, AnimatePresence } from 'framer-motion'
 
 const slideVariant = {
   initial: (direction: number) => ({
@@ -66,7 +66,6 @@ const CountdownSection: FC = () => {
             <h2 className={styles.title}>{t('sections.countdownSection.title')}</h2>
             <Button icon={EyePurpleIcon} text={t('sections.countdownSection.buttonText')} color="white" />
           </div>
-
           <div className={styles.timer}>
             <p className={styles.timer__text}>{t('sections.countdownSection.timer.title')}:</p>
             <div className={styles.timer__time}>

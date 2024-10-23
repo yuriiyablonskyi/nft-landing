@@ -1,16 +1,28 @@
-import { FC, useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
+import { FC, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { LanguageOption } from '../../../types'
 import { LogoIcon } from '../../assets/icons'
 import BurgerMenu from './BurgerMenu'
-import Menu from './Menu'
 import styles from './Header.module.sass'
-import { LanguageOption } from '../../../types'
+import Menu from './Menu'
+
+const options: LanguageOption[] = [
+  { value: 'en', label: 'English' },
+  { value: 'uk', label: 'Українська' },
+  { value: 'pl', label: 'Polski' },
+]
 
 const Header: FC = () => {
   const [menuOpen, setMenuOpen] = useState<boolean>(false)
-  const [scrolled, setScrolled] = useState(false)
+  const [scrolled, setScrolled] = useState<boolean>(false)
   const { t, i18n } = useTranslation()
+
+  const defaultLanguage = 'en'
+  const [selectedLanguage, setSelectedLanguage] = useState<LanguageOption>(() => {
+    const storedLanguage = localStorage.getItem('language') || defaultLanguage
+    return options.find(option => option.value === storedLanguage) || { value: 'en', label: 'English' }
+  })
 
   const toggleMenu = () => setMenuOpen(prevMenuOpen => !prevMenuOpen)
 
@@ -25,18 +37,6 @@ const Header: FC = () => {
       window.removeEventListener('scroll', handleScroll)
     }
   }, [])
-
-  const options: LanguageOption[] = [
-    { value: 'en', label: 'English' },
-    { value: 'uk', label: 'Українська' },
-    { value: 'pl', label: 'Polski' },
-  ]
-
-  const defaultLanguage = 'en'
-  const [selectedLanguage, setSelectedLanguage] = useState<LanguageOption>(() => {
-    const storedLanguage = localStorage.getItem('language') || defaultLanguage
-    return options.find(option => option.value === storedLanguage) || { value: 'en', label: 'English' }
-  })
 
   useEffect(() => {
     const storedLanguage = localStorage.getItem('language') || defaultLanguage
@@ -63,7 +63,6 @@ const Header: FC = () => {
 
       <Menu
         menuOpen={menuOpen}
-        t={t}
         selectedLanguage={selectedLanguage}
         options={options}
         handleChangeLanguage={handleChangeLanguage}

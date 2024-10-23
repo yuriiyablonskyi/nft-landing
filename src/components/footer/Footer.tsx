@@ -1,12 +1,13 @@
 import { FC } from 'react'
+import { useTranslation } from 'react-i18next'
 import { DiscordIcon, EnvelopeIcon, InstagramIcon, LogoIcon, TwitterIcon, YoutubeIcon } from '../../assets/icons'
 import Button from '../button/Button'
 import Container from '../container/Container'
 import styles from './Footer.module.sass'
-import { useTranslation } from 'react-i18next'
 
 const Footer: FC = () => {
   const { t } = useTranslation()
+
   return (
     <section className={styles.wrapper}>
       <Container>
@@ -16,7 +17,6 @@ const Footer: FC = () => {
               <img src={LogoIcon} alt={t('layout.footer.logo.logoAlt')} />
             </a>
             <p className={styles.footer__text}>{t('layout.footer.logo.description')}</p>
-
             <div className={styles.footer__social}>
               <p className={styles.footer__text}>{t('layout.footer.social.joinCommunity')}</p>
               <a href="#" className={styles.footer__socialLink}>

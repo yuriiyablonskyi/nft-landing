@@ -1,13 +1,14 @@
 import { FC } from 'react'
+import { useTranslation } from 'react-i18next'
+import { Category } from '../../../types/data'
 import { useCategoriesData } from '../../mock-data/use-categories-data.ts'
 import Container from '../container/Container.tsx'
 import styles from './CategoriesSection.module.sass'
-import { useTranslation } from 'react-i18next'
-import { Category } from '../../../types/data'
 
 const CategoriesSection: FC = () => {
   const { t } = useTranslation()
   const categoriesData: Category[] = useCategoriesData()
+
   return (
     <section>
       <Container>

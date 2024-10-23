@@ -1,7 +1,7 @@
 import { CollectionImg, EarningImg, WalletImg } from '../assets/images'
 
-import { Guide } from '../../types'
 import { useTranslation } from 'react-i18next'
+import { Guide } from '../../types'
 
 export const useGuideData = (): Guide[] => {
   const { t } = useTranslation()

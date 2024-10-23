@@ -1,14 +1,15 @@
 import { FC } from 'react'
+import { useTranslation } from 'react-i18next'
 import { RocketLaunchIcon } from '../../assets/icons'
 import { creatorsData } from '../../mock-data/mock-creators-data'
 import Button from '../button/Button.tsx'
 import Container from '../container/Container.tsx'
 import SectionHeader from '../section-header/SectionHeader.tsx'
 import styles from './CreatorsSection.module.sass'
-import { useTranslation } from 'react-i18next'
 
 const CreatorsSection: FC = () => {
   const { t } = useTranslation()
+
   return (
     <section>
       <Container>

@@ -1,14 +1,15 @@
 import { FC } from 'react'
+import { useTranslation } from 'react-i18next'
 import { EnvelopeIcon } from '../../assets/icons'
 import { AstronautNewspaperImg } from '../../assets/images'
 import Button from '../button/Button.tsx'
 import Container from '../container/Container.tsx'
 import SectionHeader from '../section-header/SectionHeader.tsx'
 import styles from './SubscriptionSection.module.sass'
-import { useTranslation } from 'react-i18next'
 
 const SubscriptionSection: FC = () => {
   const { t } = useTranslation()
+
   return (
     <section className={styles.wrapper}>
       <Container>

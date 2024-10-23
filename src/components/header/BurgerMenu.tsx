@@ -1,7 +1,7 @@
-import { FC } from 'react'
 import { motion } from 'framer-motion'
-import styles from './Header.module.sass'
+import { FC } from 'react'
 import { BurgerMenuProps } from '../../../types'
+import styles from './Header.module.sass'
 
 const topLineVariants = {
   closed: { rotate: 0, y: 0 },

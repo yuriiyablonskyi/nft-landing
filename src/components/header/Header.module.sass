@@ -32,12 +32,10 @@
       width: 100%
       padding: 60px 30px
       position: absolute
-      display: none
-      transform: translateX(-100%)
       text-align: center
-      top: 100px
+      top: 99px
       margin-bottom: 50px
-      left: 0
+      left: -100%
       &:before
         position: absolute
         content: ''
@@ -49,9 +47,6 @@
         width: 100%
         backdrop-filter: blur(5px)
         z-index: 0
-    &.menuOpen
-      background-color: red
-      display: flex
 
   &__link
     color: $white
@@ -60,10 +55,14 @@
     font-size: 16px
     line-height: 1.4
     margin-right: 10px
+    transition: $transition
     @media (max-width: $breakpoint-medium-large)
       margin-right: 0
       padding: 15px 50px
       font-size: 18px
+    &:hover
+      transform: translateY(-2px)
+      color: $cta
 
 .burgerMenu
   width: 27px
