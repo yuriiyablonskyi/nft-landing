@@ -33,3 +33,8 @@ export interface SelectProps {
   selectedLanguageValue: string
   onChangeLanguage: (option: LanguageOption) => void
 }
+
+export interface LanguageOption {
+  value: string
+  label: string
+}
