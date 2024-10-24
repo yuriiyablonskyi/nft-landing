@@ -12,7 +12,6 @@
     @media (max-width: $breakpoint-medium)
       flex-direction: column
       align-items: center
-
   &:before
     content: ''
     position: absolute
@@ -24,7 +23,6 @@
     background-size: cover
     background-position: center
     z-index: -2
-
   &:after
     content: ''
     position: absolute
@@ -38,13 +36,15 @@
 .timer
   padding: 30px 30px 50px
   width: 100%
+  max-width: 295px
   background-color: rgba($gray, 0.5)
   border-radius: 20px
-  max-width: 295px
+
   @media (max-width: $breakpoint-medium)
     order: -1
     margin-bottom: 30px
     padding: 20px 20px 40px
+
   &__text
     font-family: 'Space Mono', system-ui
     font-size: 12px
@@ -75,11 +75,11 @@
   &__user
     display: inline-block
     max-width: 151px
+    @include flex(null, center)
     padding: 10px 20px
     margin-bottom: 30px
     background: $gray
     border-radius: 20px
-    @include flex(null, center)
     @media (max-width: $breakpoint-medium)
       margin-bottom: 15px
 

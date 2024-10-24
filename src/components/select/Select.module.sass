@@ -4,18 +4,19 @@
   position: relative
 
 .select
-  box-shadow: inset 0 0 10px 1px rgb(0 0 0 / 20%)
-  border-radius: 15px
   padding: 16px 22px
+  border-radius: 15px
   color: $white
+  margin-right: 20px
+  box-shadow: inset 0 0 10px 1px rgb(0 0 0 / 20%)
   cursor: pointer
   position: relative
   font-weight: 600
-  margin-right: 20px
   z-index: 100
   @include flex(null, center)
   @media (max-width: $breakpoint-medium-large)
     margin: 15px 0 30px
+
   &__icon
     margin-right: 16px
     width: 18px
@@ -30,25 +31,25 @@
   &__menu
     position: absolute
     top: 60px
-    padding: 10px
     left: -40px
-    font-weight: 600
-    border-radius: 20px
-    background-color: $black
     z-index: 3
+    padding: 10px
+    border-radius: 20px
     width: calc(100% + 60px)
+    background-color: $black
     text-align: center
     box-shadow: inset 0 0 10px 1px rgba(#000, 0.5)
+    font-weight: 600
     @media (max-width: $breakpoint-medium-large)
       left: -50px
       top: 75px
       width: calc(100% + 100px)
 
   &__item
-    font-size: 18px
     padding: 8px 16px
-    cursor: pointer
     border-radius: 10px
+    font-size: 18px
+    cursor: pointer
     transition: $transition
 
     &:hover
